@@ -164,9 +164,7 @@ app.get('/api/rsxbottomup', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    return await res.send(JSON.stringify([{ title: 'Home Loan Account', value: 38 },
-    { title: 'Auto Loan Account', value: 54 },
-    { title: 'Money Market Account', value: 68 }]))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -206,7 +204,9 @@ app.get('/api/sqdatenbaum', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    return await res.send(JSON.stringify(data))
+    if (data && data.values.length === 3) {
+      return await res.send(JSON.stringify(data))
+    }
   } catch (e) {
     await res.send(JSON.stringify(e));
   }

@@ -131,12 +131,12 @@ app.get('/api/kurs', async (req, res) => {
 
     for (let i = 0; i < 6; i++) {
       await kurs.data.push({
-        name: await faker.finance.currencyCode(),
+        name: await faker.random.arrayElement(['Dax', 'SDax', 'MDax', 'TecDax', 'Euro', 'NASDAQ', 'AMEX', 'RUSSELL', 'CBOE', 'CSI 300', 'Hang']),
         value: faker.random.arrayElement(value),
       });
 
       await allocations.data.push({
-        name: await faker.random.arrayElement(['Dax', 'SDax', 'MDax', 'TecDax', 'Euro Stoxx', 'NASDAQ', 'AMEX', 'RUSSELL', 'CBOE', 'CSI 300', 'Hang Seng']),
+        name: await faker.random.arrayElement(['Dax', 'SDax', 'MDax', 'TecDax', 'Euro', 'NASDAQ', 'AMEX', 'RUSSELL', 'CBOE', 'CSI 300', 'Hang']),
         value: faker.random.arrayElement(value),
       })
     }

@@ -38,6 +38,7 @@ app.get('/api/checkscorecard', (req, res) => {
     })
   }
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/govicurwes', (req, res) => {
@@ -67,6 +68,7 @@ app.get('/api/govicurwes', (req, res) => {
   }
 
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/gruppe', (req, res) => {
@@ -100,6 +102,7 @@ app.get('/api/gruppe', (req, res) => {
   }
 
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/kurs', (req, res) => {
@@ -128,6 +131,8 @@ app.get('/api/kurs', (req, res) => {
     })
   }
   res.send(JSON.stringify({ kurs, allocations }))
+  console.log('TCL: kurs', kurs);
+  console.log('TCL: allocations', allocations);
 });
 
 app.get('/api/rsxbottomup', (req, res) => {
@@ -140,6 +145,7 @@ app.get('/api/rsxbottomup', (req, res) => {
     })
   }
   res.send(JSON.stringify({ values: data }))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/scheduling', (req, res) => {
@@ -153,6 +159,7 @@ app.get('/api/scheduling', (req, res) => {
     })
   }
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/sqdatenbaum', (req, res) => {
@@ -165,6 +172,7 @@ app.get('/api/sqdatenbaum', (req, res) => {
     })
   }
   res.send(JSON.stringify({ values: data, treeData: [] }))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/swapcurwes', (req, res) => {
@@ -194,6 +202,7 @@ app.get('/api/swapcurwes', (req, res) => {
   }
 
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/systemstatus', (req, res) => {
@@ -206,6 +215,7 @@ app.get('/api/systemstatus', (req, res) => {
     })
   }
   res.send(JSON.stringify(data))
+  console.log('TCL: data', data);
 });
 
 app.get('/api/txdatenbaum', (req, res) => {
@@ -218,6 +228,7 @@ app.get('/api/txdatenbaum', (req, res) => {
     })
   }
   res.send(JSON.stringify({ values: data, treeData: [] }))
+  console.log('TCL: data', data);
 });
 
 app.listen(API_SERVICE_PORT, () => {

@@ -5,14 +5,14 @@ const cors = require('cors');
 const API_SERVICE_PORT = 3001
 const app = express();
 
+const originUrlList = [
+  'http://localhost:3000',
+];
+
 const corsOptions = {
   origin: originUrlList,
   credentials: true,
 };
-
-const originUrlList = [
-  'http://localhost:3000',
-];
 
 app.use(cors(corsOptions));
 

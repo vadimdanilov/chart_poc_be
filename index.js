@@ -40,7 +40,7 @@ app.get('/api/checkscorecard', async (req, res) => {
     }
   
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data));
+    return await res.send(JSON.stringify(data));
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -50,7 +50,12 @@ app.get('/api/govicurwes', async (req, res) => {
   try {
     const data = {
       list: [],
-      change: [],
+      change: [
+        faker.random.number({ min: 3, max: 30 }),
+        faker.random.number({ min: 3, max: 30 }),
+        faker.random.number({ min: 3, max: 30 }),
+        faker.random.number({ min: 3, max: 30 }),
+      ],
     };
     const value = [2.6, 0.3, 0.1, 2.2, -3.5, -4.4, 3.0, -5.8, -3.4, 3.1, -2.9, -2.9, -0.1, -1.7, -2.7, -3.7];
   
@@ -64,11 +69,10 @@ app.get('/api/govicurwes', async (req, res) => {
           faker.random.arrayElement(value),
         ],
       });
-      await data.change.push(faker.random.number({ min: 3, max: 30 }));
     }
   
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data));
+    return await res.send(JSON.stringify(data));
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -106,7 +110,7 @@ app.get('/api/gruppe', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -140,7 +144,7 @@ app.get('/api/kurs', async (req, res) => {
     console.log('TCL: kurs', kurs);
     console.log('TCL: allocations', allocations);
     const data = { kurs, allocations };
-    await res.send(JSON.stringify(data));
+    return await res.send(JSON.stringify(data));
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -160,7 +164,7 @@ app.get('/api/rsxbottomup', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -179,7 +183,7 @@ app.get('/api/scheduling', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -200,7 +204,7 @@ app.get('/api/sqdatenbaum', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -228,7 +232,7 @@ app.get('/api/swapcurwes', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -246,7 +250,7 @@ app.get('/api/systemstatus', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify(data))
+    return await res.send(JSON.stringify(data))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }
@@ -264,7 +268,7 @@ app.get('/api/txdatenbaum', async (req, res) => {
     }
 
     console.log('TCL: data', data);
-    await res.send(JSON.stringify({ values: data, treeData: [] }))
+    return await res.send(JSON.stringify({ values: data, treeData: [] }))
   } catch (e) {
     await res.send(JSON.stringify(e));
   }

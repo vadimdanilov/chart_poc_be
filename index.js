@@ -1,7 +1,20 @@
 const express = require('express');
 const faker = require('faker');
+const cors = require('cors');
+
 const API_SERVICE_PORT = 3001
 const app = express();
+
+const corsOptions = {
+  origin: originUrlList,
+  credentials: true,
+};
+
+const originUrlList = [
+  'http://localhost:3000',
+];
+
+app.use(cors(corsOptions));
 
 app.get('/api/test', (req, res) => {
   res.send(JSON.stringify({ data: `Hello World, ${faker.name.findName()}!` }))

@@ -20,11 +20,11 @@ app.get('/api/test', (req, res) => {
   res.send(JSON.stringify({ data: `Hello World, ${faker.name.findName()}!` }))
 });
 
-app.get('/api/checkscorecard', (req, res) => {
+app.get('/api/checkscorecard', async (req, res) => {
   const data = [];
 
   for (let i = 0; i < 15; i++) {
-    data.push({
+    await data.push({
       name: faker.finance.currencyCode(),
       status: faker.random.arrayElement(['red', 'yellow', 'green']),
       rot: faker.random.number({ min: 1, max: 40 }),
@@ -37,11 +37,12 @@ app.get('/api/checkscorecard', (req, res) => {
       persentGelb: faker.random.number({ min: 1, max: 100 }),
     })
   }
-  res.send(JSON.stringify(data))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/govicurwes', (req, res) => {
+app.get('/api/govicurwes', async (req, res) => {
   const data = {
     list: [],
     change: [],
@@ -59,7 +60,7 @@ app.get('/api/govicurwes', (req, res) => {
   };
 
   for (let i = 0; i < 4; i++) {
-    data.list.push({
+    await data.list.push({
       name: faker.finance.currencyCode(),
       data: fakeData(),
       // change: faker.random.number({ min: 3, max: 30 }),
@@ -67,11 +68,11 @@ app.get('/api/govicurwes', (req, res) => {
     data.change.push(faker.random.number({ min: 3, max: 30 }));
   }
 
-  res.send(JSON.stringify(data))
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/gruppe', (req, res) => {
+app.get('/api/gruppe', async (req, res) => {
   const data = []
 
   const fakeValue = () => faker.random.arrayElement(
@@ -79,7 +80,7 @@ app.get('/api/gruppe', (req, res) => {
   );
 
   for (let i = 0; i < 2; i++) {
-    data.push({
+    await data.push({
       title: `Grouppe ${i + 1}`,
       data: [
         {
@@ -101,11 +102,11 @@ app.get('/api/gruppe', (req, res) => {
     })
   }
 
-  res.send(JSON.stringify(data))
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/kurs', (req, res) => {
+app.get('/api/kurs', async (req, res) => {
   const fakeValue = () => faker.random.arrayElement(
     [-0.68, -0.21, 0.9, -0.45, 1.45, -1.32, 1.71, 1.54, 1.61, 1.70, 2.75, -1.21]
   );
@@ -120,66 +121,70 @@ app.get('/api/kurs', (req, res) => {
   }
 
   for (let i = 0; i < 6; i++) {
-    kurs.data.push({
+    await kurs.data.push({
       name: faker.finance.currencyCode(),
       value: fakeValue(),
     });
 
-    allocations.data.push({
+    await allocations.data.push({
       name: faker.random.arrayElement(['Dax', 'SDax', 'MDax', 'TecDax', 'Euro Stoxx', 'NASDAQ', 'AMEX', 'RUSSELL', 'CBOE', 'CSI 300', 'Hang Seng']),
       value: fakeValue(),
     })
   }
-  res.send(JSON.stringify({ kurs, allocations }))
+
   console.log('TCL: kurs', kurs);
   console.log('TCL: allocations', allocations);
+  await res.send(JSON.stringify({ kurs, allocations }))
 });
 
-app.get('/api/rsxbottomup', (req, res) => {
+app.get('/api/rsxbottomup', async (req, res) => {
   const data = [];
 
   for (let i = 0; i < 3; i++) {
-    data.push({
+    await data.push({
       title: faker.finance.accountName(),
       value: faker.random.number({ min: 15, max: 90 })
     })
   }
-  res.send(JSON.stringify({ values: data }))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify({ values: data }))
 });
 
-app.get('/api/scheduling', (req, res) => {
+app.get('/api/scheduling', async (req, res) => {
   const data = [];
   for (let i = 0; i < 7; i++) {
-    data.push({
+    await data.push({
       date: faker.date.recent(40),
       type: faker.random.arrayElement(['Daily', 'Monthly', 'Quarterly']),
       status: faker.random.arrayElement(['red', 'yellow', 'green']),
       description: faker.lorem.sentence(4),
     })
   }
-  res.send(JSON.stringify(data))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/sqdatenbaum', (req, res) => {
+app.get('/api/sqdatenbaum', async (req, res) => {
   const data = [];
 
   for (let i = 0; i < 3; i++) {
-    data.push({
+    await data.push({
       title: faker.company.companyName(),
       value: faker.random.number({ min: 15, max: 90 }),
     })
   }
-  res.send(JSON.stringify({ values: data, treeData: [] }))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify({ values: data, treeData: [] }))
 });
 
-app.get('/api/swapcurwes', (req, res) => {
+app.get('/api/swapcurwes', async (req, res) => {
   const data = {
     list: [],
     change: [],
-  }
+  };
 
   const fakeData = () => {
     const dataValues = [];
@@ -193,7 +198,7 @@ app.get('/api/swapcurwes', (req, res) => {
   };
 
   for (let i = 0; i < 4; i++) {
-    data.list.push({
+    await data.list.push({
       name: faker.finance.currencyCode(),
       data: fakeData(),
       // change: faker.random.number({ min: 3, max: 30 }),
@@ -201,34 +206,36 @@ app.get('/api/swapcurwes', (req, res) => {
     data.change.push(faker.random.number({ min: 3, max: 30 }));
   }
 
-  res.send(JSON.stringify(data))
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/systemstatus', (req, res) => {
+app.get('/api/systemstatus', async (req, res) => {
   const data = [];
 
   for (let i = 0; i < 3; i++) {
-    data.push({
+    await data.push({
       date: faker.date.recent(15),
       description: faker.lorem.sentence(5),
     })
   }
-  res.send(JSON.stringify(data))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify(data))
 });
 
-app.get('/api/txdatenbaum', (req, res) => {
+app.get('/api/txdatenbaum', async (req, res) => {
   const data = [];
 
   for (let i = 0; i < 3; i++) {
-    data.push({
+    await data.push({
       title: faker.company.companyName(),
       value: faker.random.number({ min: 15, max: 90 }),
     })
   }
-  res.send(JSON.stringify({ values: data, treeData: [] }))
+
   console.log('TCL: data', data);
+  await res.send(JSON.stringify({ values: data, treeData: [] }))
 });
 
 app.listen(API_SERVICE_PORT, () => {

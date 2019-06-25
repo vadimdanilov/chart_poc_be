@@ -9,6 +9,8 @@ const originUrlList = [
   'http://localhost:3000',
   'http://big-cube.innowise-group.com/',
   'https://big-cube.innowise-group.com/',
+  'http://big-cube.innowise-group.com',
+  'https://big-cube.innowise-group.com',
 ];
 
 const corsOptions = {

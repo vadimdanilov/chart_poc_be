@@ -7,6 +7,8 @@ const app = express();
 
 const originUrlList = [
   'http://localhost:3000',
+  'http://big-cube.innowise-group.com/',
+  'https://big-cube.innowise-group.com/',
 ];
 
 const corsOptions = {
@@ -200,13 +202,11 @@ app.get('/api/sqdatenbaum', async (req, res) => {
       await data.values.push({
         title: await faker.company.companyName(),
         value: await faker.random.number({ min: 15, max: 90 }),
-      })
+      });
     }
 
     console.log('TCL: data', data);
-    if (data && data.values.length === 3) {
-      return await res.send(JSON.stringify(data))
-    }
+    await res.send(JSON.stringify(data));
   } catch (e) {
     await res.send(JSON.stringify(e));
   }

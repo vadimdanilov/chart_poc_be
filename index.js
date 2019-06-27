@@ -7,6 +7,7 @@ const app = express();
 
 const originUrlList = [
   'http://localhost:3000',
+  'http://192.168.100.11:3000',
   'http://big-cube.innowise-group.com/',
   'https://big-cube.innowise-group.com/',
   'http://big-cube.innowise-group.com',
